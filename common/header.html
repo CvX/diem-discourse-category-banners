@@ -30,7 +30,7 @@
           }
 
           function getHeroImg() {
-            return h('img.above-topic-image', {
+            return h('img.category-banner-image', {
               attributes: {
                 src: "https://libra.org/wp-content/uploads/2019/10/network@2x.png"
               }
@@ -39,7 +39,7 @@
 
 
           return h('div.wrap' + " ." + category.slug, [
-            h('div.above-topic-image-wrapper', getHeroImg()),
+            h('div.category-banner-image-wrapper', getHeroImg()),
             h('div.hero', [
               h('h1', category.name),
               h('div.post-title-description',catDesc())
