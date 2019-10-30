@@ -3,49 +3,60 @@
   const { h } = require('virtual-dom');
 
   api.createWidget('category-header-widget', {
-      tagName: 'span',
-      html(attrs, state) {
+    tagName: 'span',
+    html(attrs, state) {
 
-          const path = window.location.pathname;
-          let category;
+      const path = window.location.pathname;
+      let category;
 
-          const controller = container.lookup('controller:navigation/category');
-          category = controller.get("category");
+      const controller = container.lookup('controller:navigation/category');
+      category = controller.get("category");
 
-          const isException = category &&
-          settings.exceptions.split("|").includes(category.name);
+      const isException = category &&
+      settings.exceptions.split("|").includes(category.name);
 
-          if(/^\/c\//.test(path)) {
-              const hideMobile = (!settings.show_mobile && this.site.mobileView) ? "true" : hideMobile;
-              const subCat = (!settings.show_subcategory && category.parentCategory) ? "true" : subCat;
-              const noDesc = (settings.hide_if_no_description && !category.description_text) ? "true" : noDesc;
+      if(/^\/c\//.test(path)) {
+        const hideMobile = (!settings.show_mobile && this.site.mobileView) ? "true" : hideMobile;
+        const subCat = (!settings.show_subcategory && category.parentCategory) ? "true" : subCat;
+        const noDesc = (settings.hide_if_no_description && !category.description_text) ? "true" : noDesc;
 
-              if(!isException && !noDesc && !subCat && !hideMobile) {
-                  $("body").addClass("category-header");
+        if(!isException && !noDesc && !subCat && !hideMobile) {
+          $("body").addClass("category-header");
 
-                  function catDesc() {
-                      if(settings.show_description) {
-                          return h('div.cooked', {innerHTML: category.description});
-                      }
-                  }
-
-                  return h('div.wrap' + " ." + category.slug, {},
-                    h('div.hero', [
-                      h('h1', category.name),
-                      h('div.post-title-description',catDesc())
-                    ]),
-                  );
-              }
-          } else {
-              $("body").removeClass("category-header");
+          function catDesc() {
+            if(settings.show_description) {
+              return h('div.cooked', {innerHTML: category.description});
+            }
           }
+
+          function getHeroImg() {
+            return h('img.above-topic-image', {
+                attributes: {
+                  src: "https://libra.org/wp-content/uploads/2019/10/network@2x.png"
+                }
+              })
+            );
+          }
+
+
+          return h('div.wrap' + " ." + category.slug, {},
+            h('div.above-title-description', getHeroImg()),
+            h('div.hero', [
+              h('h1', category.name),
+              h('div.post-title-description',catDesc())
+            ]),
+          );
+        }
+      } else {
+        $("body").removeClass("category-header");
       }
+    }
   }),
 
   api.decorateWidget('category-header-widget:after', helper => {
-      helper.widget.appEvents.on('page:changed', () => {
-          helper.widget.scheduleRerender();
-      });
+    helper.widget.appEvents.on('page:changed', () => {
+      helper.widget.scheduleRerender();
+    });
   });
 </script>
 
@@ -54,7 +65,7 @@
   data-template-name="/connectors/below-site-header/category-header-widget"
 >
   <div class="above-topic-image-wrapper">
-    <img class="above-topic-image" src="https://libra.org/wp-content/uploads/2019/10/network@2x.png" />
+  <img class="above-topic-image" src="https://libra.org/wp-content/uploads/2019/10/network@2x.png" />
   </div>
   {{mount-widget widget="category-header-widget"}}
 </script>
