@@ -38,9 +38,7 @@
                   }
 
                   return h('div.category-title-header' + " ." + category.slug, {
-                      "attributes" : {
-                          "color: #" + category.text_color + ";"
-                      }
+
                   }, h('div.category-title-contents', [
                   ifProtected(),
                   h('h1', category.name),
