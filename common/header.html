@@ -37,14 +37,12 @@
                       }
                   }
 
-                  return h('div.category-title-header' + " ." + category.slug, {
-
-                  }, h('div.category-title-contents', [
-                  ifProtected(),
-                  h('h1', category.name),
-                  h('div.category-title-description',catDesc())
-                  ]),
-
+                  return h('div.hero' + " ." + category.slug, {},
+                    h('div.category-title-contents', [
+                      ifProtected(),
+                      h('h1', category.name),
+                      h('div.post-title-description',catDesc())
+                    ]),
                   );
               }
           } else {

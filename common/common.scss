@@ -1,27 +1,14 @@
-div[class^="category-title-header"] {
+div[class^="hero"] {
   padding-top: 100px;
   width: 100%;
-  .category-title-contents {
-    max-width: 500px;
-    padding: 40px;
-    svg {
-      height: 1.5em;
-      width: 1.1em;
-      margin-right: 0.25em;
-    }
-    h1 {
-      display: inline;
-    }
-  }
-  .category-title-description {
-    a,
-    a:visited {
-      color: inherit;
-      text-decoration: underline;
-    }
+
+  .post-title-description {
+    margin: 2em 0 4em;
+    font-size: 18px;
+    max-width: 50%;
   }
 }
-.category-header {
+.hero {
   #main-outlet {
     padding-top: 20px;
   }
