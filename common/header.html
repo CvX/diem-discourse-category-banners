@@ -39,8 +39,8 @@
 
 
           return h('div.wrap' + " ." + category.slug, [
-            h('div.category-banner-image-wrapper', getHeroImg()),
             h('div.hero', [
+              h('div.category-banner-image-wrapper', getHeroImg()),
               h('h1', category.name),
               h('div.post-title-description',catDesc())
             ]),
