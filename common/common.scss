@@ -38,7 +38,7 @@ div[class^='hero'] {
   top: 0;
   left: 60%;
   height: 0;
-  z-index: 0;
+  z-index: -1;
 
   .category-banner-image {
     position: absolute;
