@@ -9,8 +9,6 @@
       const path = window.location.pathname;
       let category;
 
-      console.log(settings.theme_uploads.banner);
-
       const controller = container.lookup('controller:navigation/category');
       category = controller.get("category");
       const isException = category &&
@@ -32,7 +30,7 @@
           function getHeroImg() {
             return h('img.category-banner-image', {
               attributes: {
-                src: "https://libra.org/wp-content/uploads/2019/10/network@2x.png"
+                src: settings.theme_uploads.banner
               }
             });
           }
