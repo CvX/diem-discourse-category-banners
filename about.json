@@ -2,5 +2,8 @@
   "name": "diem-discourse-category-banners",
   "about_url": "https://meta.discourse.org/t/discourse-category-banners/86241",
   "component": true,
-  "license_url": "https://meta.discourse.org/t/discourse-category-banners/86241"
+  "license_url": "https://meta.discourse.org/t/discourse-category-banners/86241",
+  "assets": {
+    "banner": "assets/banner.png"
+  }
 }
