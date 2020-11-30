@@ -3,12 +3,13 @@ section#main {
   padding-bottom: 5em;
 }
 
-div[class^="hero"] {
+div.hero {
   padding: calc(2rem + 60px) 0 10px 0;
   margin-bottom: -3rem;
   width: 100%;
   position: relative;
   z-index: 0;
+  margin-bottom: 2em;
   h1 {
     margin: 0 0 4px 0;
     font-size: 3rem;
@@ -36,10 +37,6 @@ div[class^="hero"] {
   }
 }
 
-#main-outlet {
-  padding-top: 5em;
-}
-
 .category-banner-image-wrapper {
   position: absolute;
   top: 0;
@@ -59,7 +56,7 @@ div[class^="hero"] {
 }
 
 @media screen and (max-width: 600px) {
-  div[class^="hero"] {
+  div.hero {
     .post-title-description {
       max-width: none;
     }
