@@ -3,7 +3,7 @@ section#main {
   padding-bottom: 5em;
 }
 
-div[class^='hero'] {
+div[class^="hero"] {
   padding: calc(2rem + 60px) 0 10px 0;
   margin-bottom: -3rem;
   width: 100%;
@@ -36,6 +36,10 @@ div[class^='hero'] {
   }
 }
 
+#main-outlet {
+  padding-top: 5em;
+}
+
 .category-banner-image-wrapper {
   position: absolute;
   top: 0;
@@ -55,7 +59,7 @@ div[class^='hero'] {
 }
 
 @media screen and (max-width: 600px) {
-  div[class^='hero'] {
+  div[class^="hero"] {
     .post-title-description {
       max-width: none;
     }
