@@ -11,22 +11,27 @@
 
       const controller = container.lookup('controller:navigation/category');
       category = controller.get("category");
+      // exceptions are categories that we do not want to apply the custom banner to
       const isException = category &&
         settings.exceptions.split("|").includes(category.slug);
+      // if we are currently on a category page - path will contain /c/
       if(/^\/c\//.test(path)) {
         const hideMobile = (!settings.show_mobile && this.site.mobileView) ? "true" : hideMobile;
         const subCat = (!settings.show_subcategory && category.parentCategory) ? "true" : subCat;
+        // determines if there is a description or not
         const noDesc = (settings.hide_if_no_description && !category.description_text) ? "true" : noDesc;
 
         if(!isException && !noDesc && !subCat && !hideMobile) {
           $("body").addClass("category-header");
 
+          // returns the category description wrapped in a div element
           function catDesc() {
             if(settings.show_description) {
               return h('div.cooked', { innerHTML: category.description || '' });
             }
           }
 
+          // returns the hero image
           function getHeroImg() {
             return h('img.category-banner-image', {
               attributes: {
@@ -50,7 +55,13 @@
     }
   }),
 
+  // place the custom banner in the `category-header-widget:after` widget
   api.decorateWidget('category-header-widget:after', helper => {
+    // make sure the widget re-renders on each page change (this ensures the titles and
+    // descriptions for the banners are accurate to the current page).
+    // the app would not naturally "update" the text when navigating even though it should
+    // this mostly is used when switching between categories. since the widget never gets unmounted
+    // it does not automatically re-render unless we tell it to.
     helper.widget.appEvents.on('page:changed', () => {
       helper.widget.scheduleRerender();
     });
