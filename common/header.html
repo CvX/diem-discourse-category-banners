@@ -1,16 +1,13 @@
 <script type="text/discourse-plugin" version="0.10">
-  const container = Discourse.__container__;
   const { h } = require('virtual-dom');
 
   api.createWidget('category-header-widget', {
     tagName: 'span',
     html(attrs, state) {
-
       const path = window.location.pathname;
-      let category;
+      const controller = api.container.lookup('controller:navigation/category');
+      let category = controller.get("category");
 
-      const controller = container.lookup('controller:navigation/category');
-      category = controller.get("category");
       // exceptions are categories that we do not want to apply the custom banner to
       const isException = category &&
         settings.exceptions.split("|").includes(category.slug);
